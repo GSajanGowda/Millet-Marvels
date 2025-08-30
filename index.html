@@ -3,40 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Millet Recipe Finder</title>
+  <title>Millet Marvels</title>
   <link rel="stylesheet" href="style.css">
-  <script src="recipes.js"></script>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🍚 Millet Marvels</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search recipes...">
+      <button>🔍</button>
+    </div>
+    <div class="favorites">❤️ Favorites</div>
+  </header>
 
-<header>
-  <h1>🌾 Smart Millet Recipe Finder</h1>
-  <p>Discover healthy millet-based recipes</p>
-</header>
+  <!-- Welcome Section -->
+  <section class="welcome">
+    <h1>Welcome to Millet Marvels</h1>
+    <p>
+      Explore a world of wholesome and delicious recipes made from a variety of millets.
+      Healthy eating has never been so tasty!
+    </p>
+  </section>
 
-<div class="recipes" id="recipeList"></div>
+  <!-- Recipe Grid -->
+  <section class="recipes">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Pearl_Millet.jpg" alt="Pearl Millet">
+      <h3>Pearl Millet Porridge</h3>
+      <p>A creamy and nutritious porridge, perfect for a healthy start to your day.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Foxtail_millet.jpg" alt="Foxtail Millet">
+      <h3>Foxtail Millet Upma</h3>
+      <p>A wholesome breakfast dish made with foxtail millet and vegetables.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Sorghum_Plant.jpg" alt="Sorghum">
+      <h3>Sorghum Roti</h3>
+      <p>Gluten-free flatbread made from sorghum flour, soft and easy to make.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Finger_millet.jpg" alt="Finger Millet">
+      <h3>Finger Millet Dosa</h3>
+      <p>Crispy and healthy dosas made from finger millet, nutritious and tasty.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Kodo_Millet.jpg" alt="Kodo Millet">
+      <h3>Kodo Millet Pulao</h3>
+      <p>A fragrant one-pot meal with Kodo millet and fresh vegetables.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Barnyard_Millet.jpg" alt="Barnyard Millet">
+      <h3>Barnyard Millet Khichdi</h3>
+      <p>A light and healthy one-pot meal made with barnyard millet and lentils.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Little_Millet.jpg" alt="Little Millet">
+      <h3>Little Millet Lemon Rice</h3>
+      <p>A tangy dish made with little millet, perfect for a light lunch.</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Proso_Millet.jpg" alt="Proso Millet">
+      <h3>Proso Millet Salad</h3>
+      <p>Refreshing salad with cooked proso millet, vegetables, and lemon dressing.</p>
+    </div>
+  </section>
 
-<footer>
-  <p>© 2025 Smart Millet Recipes | Eat Healthy, Stay Strong 💚</p>
-</footer>
-
-<script>
-  const container = document.getElementById("recipeList");
-  recipes.forEach(r => {
-    container.innerHTML += `
-      <div class="card">
-        <img src="${r.img}" alt="${r.name}">
-        <h3>${r.name}</h3>
-        <p><b>Millet:</b> ${r.millet}</p>
-        <button onclick="openRecipe(${r.id})">View Recipe</button>
-      </div>
-    `;
-  });
-
-  function openRecipe(id) {
-    window.location.href = `recipe.html?id=${id}`;
-  }
-</script>
-
+  <!-- Footer -->
+  <footer>
+    <p>Discover the magic of millets with Millet Marvels.</p>
+  </footer>
 </body>
 </html>
