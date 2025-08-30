@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="recipes.js"></script>
+</head>
+<body>
+
+<header>
+  <h1 id="recipeTitle">Loading...</h1>
+</header>
+
+<div class="recipe-detail">
+  <img id="recipeImg" src="" alt="">
+  <h2>Ingredients</h2>
+  <ul id="ingredientList"></ul>
+  
+  <h2>Steps</h2>
+  <ol id="stepsList"></ol>
+</div>
+
+<div class="related">
+  <h2>Other Recipes with <span id="milletName"></span></h2>
+  <div id="relatedList"></div>
+</div>
+
+<footer>
+  <button onclick="window.history.back()">⬅ Back</button>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const recipeId = parseInt(params.get("id"));
+  const recipe = recipes.find(r => r.id === recipeId);
+
+  if (recipe) {
+    document.getElementById("recipeTitle").innerText = recipe.name;
+    document.getElementById("recipeImg").src = recipe.img;
+
+    const ingList = document.getElementById("ingredientList");
+    recipe.ingredients.forEach(i => {
+      ingList.innerHTML += `<li>${i}</li>`;
+    });
+
+    const stepsList = document.getElementById("stepsList");
+    recipe.steps.forEach(s => {
+      stepsList.innerHTML += `<li>${s}</li>`;
+    });
+
+    // Related recipes
+    document.getElementById("milletName").innerText = recipe.millet;
+    const related = recipes.filter(r => r.millet === recipe.millet && r.id !== recipe.id);
+    const relatedList = document.getElementById("relatedList");
+
+    related.forEach(r => {
+      relatedList.innerHTML += `
+        <div class="card">
+          <img src="${r.img}" alt="${r.name}">
+          <h3>${r.name}</h3>
+          <button onclick="window.location.href='recipe.html?id=${r.id}'">View</button>
+        </div>
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>

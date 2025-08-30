@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Millet Recipe Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="recipes.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>🌾 Smart Millet Recipe Finder</h1>
+  <p>Discover healthy millet-based recipes</p>
+</header>
+
+<div class="recipes" id="recipeList"></div>
+
+<footer>
+  <p>© 2025 Smart Millet Recipes | Eat Healthy, Stay Strong 💚</p>
+</footer>
+
+<script>
+  const container = document.getElementById("recipeList");
+  recipes.forEach(r => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${r.img}" alt="${r.name}">
+        <h3>${r.name}</h3>
+        <p><b>Millet:</b> ${r.millet}</p>
+        <button onclick="openRecipe(${r.id})">View Recipe</button>
+      </div>
+    `;
+  });
+
+  function openRecipe(id) {
+    window.location.href = `recipe.html?id=${id}`;
+  }
+</script>
+
+</body>
+</html>
