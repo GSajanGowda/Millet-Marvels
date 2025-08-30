@@ -4,115 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Millet Marvels</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #eaf3ff, #dbeafe);
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #f9fafb;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      font-size: 22px;
-      color: #1e3a8a;
-    }
-    .search {
-      padding: 7px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    .hero {
-      text-align: center;
-      padding: 20px;
-    }
-    .hero h2 {
-      color: #1e40af;
-      font-size: 28px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 15px;
-    }
-    .card-body h3 {
-      margin: 0;
-      font-size: 18px;
-      color: #111827;
-    }
-    .card-body p {
-      font-size: 14px;
-      color: #555;
-      margin-top: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      color: #333;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <h1>🌾 Millet Marvels</h1>
-    <input type="text" class="search" placeholder="Search recipes...">
+    <input type="text" id="searchBox" placeholder="Search recipes...">
   </header>
 
-  <div class="hero">
+  <main>
     <h2>Welcome to Millet Marvels</h2>
     <p>Explore wholesome and delicious recipes made from a variety of millets.</p>
-  </div>
-
-  <div class="grid">
-    <a href="pearl-millet.html" class="card">
-      <img src="pearl.jpg" alt="Pearl Millet">
-      <div class="card-body">
-        <h3>Pearl Millet Porridge</h3>
-        <p>A creamy and nutritious porridge, perfect for a healthy start to your day.</p>
-      </div>
-    </a>
-
-    <a href="foxtail-millet.html" class="card">
-      <img src="foxtail.jpg" alt="Foxtail Millet">
-      <div class="card-body">
-        <h3>Foxtail Millet Upma</h3>
-        <p>A savory and wholesome breakfast dish made with foxtail millet.</p>
-      </div>
-    </a>
-  </div>
+    <div id="millet-list"></div>
+  </main>
 
   <footer>
-    Discover the magic of millets with Millet Marvels.
+    <p>Discover the magic of millets with Millet Marvels.</p>
   </footer>
+
+  <script src="scripts/millets.js"></script>
+  <script>
+    const container = document.getElementById("millet-list");
+    const searchBox = document.getElementById("searchBox");
+
+    function renderMillets(filter = "") {
+      container.innerHTML = "";
+      millets
+        .filter(m => m.name.toLowerCase().includes(filter.toLowerCase()))
+        .forEach(millet => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${millet.image}" alt="${millet.name}">
+            <h3>${millet.name}</h3>
+            <p>${millet.description}</p>
+            <a href="recipe.html?id=${millet.recipes[0]}">View Recipe</a>
+          `;
+          container.appendChild(card);
+        });
+    }
+
+    searchBox.addEventListener("input", e => renderMillets(e.target.value));
+
+    renderMillets();
+  </script>
 </body>
 </html>
